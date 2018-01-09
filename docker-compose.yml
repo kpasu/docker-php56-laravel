@@ -1,0 +1,27 @@
+version: '2'
+services:
+
+  # web
+  web:
+    build: ./web
+    ports:
+      - "80:80"
+    links:
+      - "mysql:mysql"
+    volumes:
+      - "$PWD/src:/var/www"
+      - "$PWD/web/files/php.ini:/etc/php.ini"
+      - "$PWD/web/files/httpd.conf:/etc/httpd/conf/httpd.conf"
+    command: httpd -DFOREGROUND
+
+  # mysql
+  mysql:
+    build: ./mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - "$PWD/mysql/files/my.cnf:/etc/my.cnf"
+      - "$PWD/mysql/data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+

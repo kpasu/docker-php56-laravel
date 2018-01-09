@@ -1,0 +1,7 @@
+
+.DS_Store
+
+mysql/data
+src
+
+!.gitkeep
