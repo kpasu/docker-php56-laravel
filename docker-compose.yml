@@ -6,8 +6,6 @@ services:
     build: ./web
     ports:
       - "80:80"
-    links:
-      - "mysql:mysql"
     volumes:
       - "$PWD/src:/var/www"
       - "$PWD/web/files/php.ini:/etc/php.ini"
