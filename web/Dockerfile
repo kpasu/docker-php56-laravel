@@ -4,7 +4,6 @@ FROM centos:7.4.1708
 RUN yum update -y
 
 RUN yum install -y httpd
-
 RUN yum install -y less wget zip unzip
 
 RUN yum -y install epel-release
