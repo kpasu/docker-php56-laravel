@@ -9,6 +9,7 @@ services:
     volumes:
       - ../www:/var/www
       - ../log:/var/log/httpd
+      - ../tmp:/tmp/local
       - ./web/files/php.ini:/etc/php.ini
       - ./web/files/httpd.conf:/etc/httpd/conf/httpd.conf
     command: httpd -DFOREGROUND
@@ -21,6 +22,7 @@ services:
     volumes:
       - ../data:/var/lib/mysql
       - ../log:/var/log
+      - ../tmp:/tmp/local
       - ./mysql/files/my.cnf:/etc/my.cnf
     environment:
       MYSQL_ROOT_PASSWORD: pass
@@ -30,3 +32,11 @@ services:
     image: redis:3.0.7
     ports:
       - "6379:6379"
+
+  # chef
+  chef:
+    build: ./chef
+    volumes:
+      - ../tmp:/tmp/local
+    command: httpd -DFOREGROUND
+
