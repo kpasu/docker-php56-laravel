@@ -4,5 +4,6 @@
 data/*
 log/*
 www/*
+tmp/*
 
 !.gitkeep
