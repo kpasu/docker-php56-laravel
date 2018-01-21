@@ -36,7 +36,17 @@ services:
   # chef
   chef:
     build: ./chef
-    volumes:
-      - ../tmp:/tmp/local
-    command: httpd -DFOREGROUND
+    volumes_from:
+      - web
 
+  # gulp
+  gulp:
+    build: ./gulp
+    volumes_from:
+      - web
+
+  # composer
+  composer:
+    build: ./composer
+    volumes_from:
+      - web
