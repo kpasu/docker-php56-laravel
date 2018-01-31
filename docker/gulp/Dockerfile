@@ -13,7 +13,7 @@ RUN npm install --g gulp-cli
 
 # etc
 RUN yum clean all
-RUN /bin/cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+ENV TZ="Asia/Tokyo"
 
 WORKDIR /var/www
 ENTRYPOINT ["gulp"]
