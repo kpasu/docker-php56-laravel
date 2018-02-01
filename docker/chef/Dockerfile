@@ -32,7 +32,7 @@ RUN rpm -Uvh chefdk-2.4.17-1.el7.x86_64.rpm
 
 # etc
 RUN yum clean all
-ENV TZ="Asia/Tokyo"
+RUN /bin/cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 WORKDIR /var/www
 ENTRYPOINT ["chef"]

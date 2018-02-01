@@ -27,4 +27,4 @@ RUN npm install --g gulp-cli
 
 # etc
 RUN yum clean all
-ENV TZ="Asia/Tokyo"
+RUN /bin/cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime

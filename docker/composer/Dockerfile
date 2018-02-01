@@ -18,7 +18,7 @@ ENV PATH $PATH:/root/.composer/vendor/bin
 
 # etc
 RUN yum clean all
-ENV TZ="Asia/Tokyo"
+RUN /bin/cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 WORKDIR /var/www
 ENTRYPOINT ["composer"]

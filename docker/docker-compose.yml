@@ -4,24 +4,25 @@ services:
   # web
   web:
     build: ./web
-    depends_on:
-      - sync
     ports:
       - "80:80"
     volumes:
+      - ../www:/var/www
       - ../log:/var/log/httpd
       - ../tmp:/tmp/local
       - ./web/files/php.ini:/etc/php.ini
       - ./web/files/httpd.conf:/etc/httpd/conf/httpd.conf
-    volumes_from:
-      - sync
     command: httpd -DFOREGROUND
 
   sync:
     build: ./sync
+    depends_on:
+      - web
     volumes:
       - /var/sync
-      - ../www:/var/www
+      - ./sync/files/entrypoint.sh:/entrypoint.sh
+    entrypoint:
+      - pwd
 
   # mysql
   mysql:
